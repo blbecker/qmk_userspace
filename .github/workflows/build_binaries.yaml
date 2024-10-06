@@ -5,6 +5,7 @@ on:
     branches:
       - develop
       - ci
+    workflow_dispatch:
 
 permissions:
   contents: write
@@ -17,18 +18,18 @@ jobs:
       qmk_repo: qmk/qmk_firmware
       qmk_ref: master
 
-  publish:
-    runs-on: ubuntu
-    needs: build
-    steps:
-      - name: Application Version
-        id: version
-        uses: paulhatch/semantic-version@v5.4.0
-        with:
-            change_path: "keyboards layouts users qmk.json"
+  version:
+    name: Application Version
+    uses: paulhatch/semantic-version@v5.4.0
+    with:
+      change_path: "keyboards layouts users qmk.json"
 
-      - name: 'QMK Userspace Publish'
-        uses: qmk/.github/.github/workflows/qmk_userspace_publish.yml@main
-        if: always() && !cancelled()
-        with:
-            release_name: ${{ steps.version.outputs.version }}"
+  publish:
+    name: 'QMK Userspace Publish'
+    uses: qmk/.github/.github/workflows/qmk_userspace_publish.yml@main
+    if: always() && !cancelled()
+    needs:
+      - build
+      - version
+    with:
+        release_name: "${{needs.version.outputs.version}}"
