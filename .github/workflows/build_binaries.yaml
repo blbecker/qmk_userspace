@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - develop
-      - ci
 
 permissions:
   contents: write
@@ -28,6 +27,7 @@ jobs:
         with:
           change_path: "keyboards layouts users qmk.json"
 
+    #   Based on: qmk/.github/.github/workflows/qmk_userspace_publish.yml@main
       - name: Download binaries
         if: always() && !cancelled()
         uses: actions/download-artifact@v4
@@ -51,8 +51,4 @@ jobs:
             **/*.bin
             **/*.uf2
 
-      # - name: 'QMK Userspace Publish'
-      #   uses: qmk/.github/.github/workflows/qmk_userspace_publish.yml@main
-      #   if: always() && !cancelled()
-      #   with:
-      #     release_name: "${{steps.version.outputs.version_tag}}"
+
