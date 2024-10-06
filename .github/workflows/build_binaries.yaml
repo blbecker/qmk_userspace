@@ -5,7 +5,6 @@ on:
     branches:
       - develop
       - ci
-    workflow_dispatch:
 
 permissions:
   contents: write
@@ -19,6 +18,8 @@ jobs:
       qmk_ref: master
 
   publish:
+    runs-on: ubuntu
+    needs: build
     steps:
       - name: Application Version
         id: version
@@ -29,6 +30,5 @@ jobs:
       - name: 'QMK Userspace Publish'
         uses: qmk/.github/.github/workflows/qmk_userspace_publish.yml@main
         if: always() && !cancelled()
-        needs: build
         with:
             release_name: ${{ steps.version.outputs.version }}"
