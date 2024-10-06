@@ -1,7 +1,9 @@
 # My ErgoDox EZ Configuration
 
-Blank Keymap layer
+## TODO
+- [ ] Implement [Keymap Drawer](https://github.com/caksoylar/keymap-drawer)
 
+Blank Keymap layer
 ```
 /* Keymap X: Layer Name
  *

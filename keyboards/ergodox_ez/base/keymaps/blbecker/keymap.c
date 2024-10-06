@@ -70,12 +70,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   | Ctrl | Meta |  Alt | Left |  Alt |                                       | Copy  |Paste | Cut  |Home/End| ~L1  |
  *   `----------------------------------'                                       `-------------------------------------'
  *                                        ,--------------.       ,-------------.
- *                                        | App  |  LGui |       |MC1Rec|MC1Play |
- *                                 ,------|------|-------|       |------+--------+------.
- *                                 |      |      |  Home |       |MCStp |        |      |
- *                                 | Space|Delete|-------|       |------|  Tab   |Enter |
- *                                 | SYMB |NAV   |End/Num|       | PgDn |        |      |
- *                                 `---------------------'       `----------------------'
+ *                                        | App  |  LGui |       |MC1Rec|MC1Play|
+ *                                 ,------|------|-------|       |------+-------+------.
+ *                                 |      |      |  Home |       |MCStp |       |      |
+ *                                 | Space|Delete|-------|       |------|Delete |Space |
+ *                                 | SYMB |NAV   |End/Num|       | PgDn |NAV    |SYMB  |
+ *                                 `---------------------'       `---------------------'
  */
 [BASE] = LAYOUT_ergodox_pretty(
   // left hand
