@@ -21,3 +21,5 @@ qmk config user.qmk_home=/workspaces/qmk_firmware
 qmk config user.overlay_dir="$userspacePath"
 
 qmk git-submodule
+
+echo "source /workspaces/qmk_firmware/util/qmk_tab_complete.sh" >> $HOME/.bashrc

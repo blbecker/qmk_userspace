@@ -3,7 +3,7 @@ FROM python:3-bookworm
 ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
-
+ARG FIRMWARE_DIR=/home/vscode/qmk_firmware
 # Create the user
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
@@ -22,6 +22,6 @@ USER $USERNAME
 
 RUN python3 -m pip install --user qmk
 
-ARG qmkFirmwarePath="${HOME}/qmk_firmware"
-RUN git clone https://github.com/qmk/qmk_firmware.git "${qmkFirmwarePath}"
+RUN git clone https://github.com/qmk/qmk_firmware.git ${FIRMWARE_DIR}
+
 # RUN /home/vscode/.local/bin/qmk setup -y
